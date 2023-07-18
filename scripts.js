@@ -131,12 +131,12 @@ tabla3.style.display = 'none';
 
 const consultarPorIdiomaNombre = async (e) => {
     e.preventDefault();
-    let buscarPais3 = formulario3.contries3.value;
-    if (buscarPais3 === '') {
+    let searchTerm = formulario3.contries3.value;
+    if (searchTerm === '') {
         alert("Ingrese el idioma o nombre a buscar");
         return;
     }
-    const url = `https://restcountries.com/v3.1/lang/${encodeURIComponent(buscarPais3)}`;
+    const url = `https://restcountries.com/v3.1/lang/${encodeURIComponent(searchTerm)}`;
 
     const config = {
         method: 'GET'
@@ -158,12 +158,21 @@ const consultarPorIdiomaNombre = async (e) => {
                 const row = document.createElement('tr');
                 const paisCell = document.createElement('td');
                 const banderaCell = document.createElement('td');
+                const monedaCell = document.createElement('td');
 
                 paisCell.textContent = country.name.common; // Acceder al nombre común del país
                 banderaCell.innerHTML = `<img src="${country.flags.svg}" alt="Bandera">`; // Acceder a la URL de la bandera
 
+                if (country.currencies) {
+                    const currencies = Object.values(country.currencies).join(', ');
+                    monedaCell.textContent = currencies; // Mostrar las monedas
+                } else {
+                    monedaCell.textContent = '-'; // Mostrar guion si no hay monedas disponibles
+                }
+
                 row.appendChild(paisCell);
                 row.appendChild(banderaCell);
+                // row.appendChild(monedaCell);
 
                 tbody.appendChild(row);
             });
@@ -179,4 +188,5 @@ const consultarPorIdiomaNombre = async (e) => {
 };
 
 formulario3.addEventListener('submit', consultarPorIdiomaNombre);
+
 
