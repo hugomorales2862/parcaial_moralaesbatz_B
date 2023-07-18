@@ -177,3 +177,5 @@ const consultarPorMoneda = async (e) => {
         console.log(error);
     }
 };
+
+formulario3.addEventListener('submit', consultarPorMoneda);
