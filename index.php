@@ -8,59 +8,90 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <style>
+        .field.has-addons .control:first-child {
+            margin-right: 10px;
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f5f5f5;
         }
 
         .container {
             text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #frmUsers {
+            text-align: center;
         }
 
         .container h1 {
             margin-bottom: 1rem;
+            font-size: 24px;
+            color: #333;
         }
 
-        .field {
-            margin-bottom: 1rem;
+        .container .field {
+            margin-bottom: 1.5rem;
         }
 
-        .table-container {
+        .container .control .input {
+            font-size: 14px;
+            padding: 6px;
+        }
+
+        .container .control .button {
+            font-size: 14px;
+            padding: 8px 20px;
+        }
+
+        .container .table-container {
             margin-top: 2rem;
         }
 
-        table {
+        .container table {
             width: 100%;
             border-collapse: collapse;
             font-family: Arial, sans-serif;
             margin-bottom: 1rem;
         }
 
-        th {
+        .container th {
             background-color: #f2f2f2;
             padding: 12px;
             text-align: left;
             font-weight: bold;
-            font-size: 16px;
-            color: #333333;
+            font-size: 14px;
+            color: #333;
             border-bottom: 2px solid #cccccc;
         }
 
-        td {
+        .container td {
             padding: 12px;
             border-bottom: 1px solid #cccccc;
         }
 
-        tr:hover {
+        .container tr:hover {
             background-color: #f9f9f9;
         }
 
-        img {
+        .container img {
             max-width: 100%;
             height: auto;
         }

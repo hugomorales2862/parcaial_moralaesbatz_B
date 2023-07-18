@@ -120,6 +120,8 @@ const consultarSubregion = async (e) => {
 };
 
 formulario2.addEventListener('submit', consultarSubregion);
+
+
 ////////////////////////////////////////////////////////////////////////
 const formulario3 = document.getElementById('frmUsers3');
 const tabla3 = document.getElementById('table3');
