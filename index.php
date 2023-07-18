@@ -10,8 +10,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <style>
+        body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
     table {
-        width: 100%;
+        width: 100% auto;
         border-collapse: collapse;
         font-family: Arial, sans-serif;
     }
@@ -56,11 +68,11 @@
             <button id="buttonConsulta" type="submit" class="button is-info">
                 BUSCAR
             </button>
+            <p id="estado"></p>
         </div>
         </div>
     </form>
     <br>
-    <p id="estado"></p>
     <table>
         <thead>
             <tr>

@@ -11,10 +11,11 @@ const consultarPais= async (e) => {
         return;
     }
 const url = `https://restcountries.com/v3.1/demonym/${nombrePais}`
+
 const config = {
         method : 'GET'
     }
-
+    
         // consulta a la API
         document.getElementById('estado').innerText = 'Buscando datos...'
         try {
@@ -26,15 +27,15 @@ const config = {
                 console.log(pais)
                 console.log(pais.name.common)
                 console.log(pais.name.official)
-                console.log(pais.name.nativeName)
+                console.log(pais.population)
                 // console.log(pais.sprites.front_default)
     
                 document.getElementById('nombrePais').innerText = pais.name.common
                 document.getElementById('nombreOficial').innerText = pais.name.official
-                document.getElementById('nombreNativo').innerText = pais.name.nativeName
+                document.getElementById('nombreNativo').innerText = pais.population
                 // document.getElementById('--').src = data.sprites.front_default
                 document.getElementById('estado').innerText = 'Datos encontrados'
-                tabla.style.display = ''
+                tabla.style.display = 'block'
             }else{
                 // alert('error en la consulta')
                 document.getElementById('estado').innerText = 'Datos no encontrados'
