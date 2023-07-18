@@ -106,7 +106,7 @@
                 <div class="control has-icons-left">
                     <input class="input" name="contries" type="text" placeholder="Gentilicio en inglés" autocomplete="off">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
+                        <i class=""></i>
                     </span>
                 </div>
             </div>
@@ -149,7 +149,7 @@
                 <div class="control has-icons-left">
                     <input class="input" name="contries2" type="text" placeholder="Subregiones" autocomplete="off">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
+                        <i class=""></i>
                     </span>
                 </div>
             </div>
@@ -179,12 +179,12 @@
         </div>
 
         <form action="" id="frmUsers3">
-            <h1>MONEDAS</h1>
+            <h1>PAIS</h1>
             <div class="field">
                 <div class="control has-icons-left">
                     <input class="input" name="contries3" type="text" placeholder="Código de moneda" autocomplete="off">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
+                        <i class=""></i>
                     </span>
                 </div>
             </div>

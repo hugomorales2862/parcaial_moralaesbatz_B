@@ -131,12 +131,12 @@ tabla3.style.display = 'none';
 
 const consultarPorIdiomaNombre = async (e) => {
     e.preventDefault();
-    let searchTerm = formulario3.contries3.value;
-    if (searchTerm === '') {
+    let buscarPais3 = formulario3.contries3.value;
+    if (buscarPais3 === '') {
         alert("Ingrese el idioma o nombre a buscar");
         return;
     }
-    const url = `https://restcountries.com/v3.1/lang/${encodeURIComponent(searchTerm)}`;
+    const url = `https://restcountries.com/v3.1/lang/${encodeURIComponent(buscarPais3)}`;
 
     const config = {
         method: 'GET'
@@ -179,3 +179,4 @@ const consultarPorIdiomaNombre = async (e) => {
 };
 
 formulario3.addEventListener('submit', consultarPorIdiomaNombre);
+
