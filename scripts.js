@@ -1,49 +1,133 @@
-const formulario = document.querySelector('form')
-const tabla = document.querySelector('table')
-const button = document.getElementById('buttonConsulta')
+const formulario = document.querySelector('#frmUsers');
+        const tabla = document.querySelector('table');
+        const button = document.getElementById('buttonConsulta');
 
-tabla.style.display = 'none'
-const consultarPais= async (e) => {
-    e.preventDefault();
-    let nombrePais = formulario.contries.value;
-    if(nombrePais == ''){
-        alert("ingrese el dato del pais")
-        return;
-    }
-const url = `https://restcountries.com/v3.1/demonym/${nombrePais}`
+        document.getElementById('frmUsers').addEventListener('submit', function (event) {
+            var input = document.getElementsByName('contries')[0];
+            var userInput = input.value.trim().toLowerCase();
 
-const config = {
-        method : 'GET'
-    }
-    
-        // consulta a la API
-        document.getElementById('estado').innerText = 'Buscando datos...'
-        try {
-            // CONSULTA A LA API
-            const respuesta = await fetch(url, config);   
-            if(respuesta.status == 200){
-                const data = await respuesta.json()
-                const pais = data[0]
-                console.log(pais)
-                console.log(pais.name.common)
-                console.log(pais.name.official)
-                console.log(pais.population)
-                // console.log(pais.sprites.front_default)
-    
-                document.getElementById('nombrePais').innerText = pais.name.common
-                document.getElementById('nombreOficial').innerText = pais.name.official
-                document.getElementById('nombreNativo').innerText = pais.population
-                // document.getElementById('--').src = data.sprites.front_default
-                document.getElementById('estado').innerText = 'Datos encontrados'
-                tabla.style.display = 'block'
-            }else{
-                // alert('error en la consulta')
-                document.getElementById('estado').innerText = 'Datos no encontrados'
+
+            fetch('https://restcountries.com/v2/all')
+                .then(response => response.json())
+                .then(data => {
+                    // verificar que el gentilicio sea en inglés
+                    var countryGentilicios = {};
+                    data.forEach(country => {
+                        var countryName = country.name.toLowerCase();
+                        var englishGentilicio = country.demonym;
+                        if (countryName && englishGentilicio) {
+                            countryGentilicios[countryName] = englishGentilicio;
+                        }
+                    });
+
+
+                    if (userInput !== '' && !countryGentilicios.hasOwnProperty(userInput)) {
+                        event.preventDefault();
+                        alert('Por favor, ingrese un gentilicio en inglés');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+
+        tabla.style.display = 'none';
+        const consultarPais = async (e) => {
+            e.preventDefault();
+            let nombrePais = formulario.contries.value;
+            if (nombrePais == '') {
+                alert("Ingrese el dato del país");
+                return;
             }
-        } catch (error) {
-            console.log(error)
-        }
-    }
+            const url = `https://restcountries.com/v2/demonym/${nombrePais}`;
 
-    formulario.addEventListener('submit', consultarPais )
- 
+            const config = {
+                method: 'GET'
+            };
+
+            // consulta a la API
+            document.getElementById('estado').innerText = 'Buscando datos...';
+            try {
+                // CONSULTA A LA API
+                const respuesta = await fetch(url, config);
+                if (respuesta.status == 200) {
+                    const data = await respuesta.json();
+                    const pais = data[0];
+                    console.log(pais);
+                    console.log(pais.name.common);
+                    console.log(pais.name.official);
+                    console.log(pais.population);
+
+                    document.getElementById('nombrePais').innerText = pais.name.common;
+                    document.getElementById('nombreOficial').innerText = pais.name.official;
+                    document.getElementById('nombreNativo').innerText = pais.population;
+                    document.getElementById('estado').innerText = 'Datos encontrados';
+                    tabla.style.display = 'block';
+                } else {
+                    document.getElementById('estado').innerText = 'Datos no encontrados';
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        formulario.addEventListener('submit', consultarPais);
+
+
+        const formulario2 = document.getElementById('frmUsers2');
+        const tabla2 = document.getElementById('table2');
+        const button2 = document.getElementById('buttonConsulta2');
+
+
+        tabla2.style.display = 'none';
+
+        const consultarSubregion = async (e) => {
+            e.preventDefault();
+            let nombrePais2 = formulario2.contries2.value;
+            if (nombrePais2 === '') {
+                alert("Ingrese el dato de la SubRegión");
+                return;
+            }
+            const url = `https://restcountries.com/v3.1/subregion/${nombrePais2}`;
+
+            const config = {
+                method: 'GET'
+            };
+
+            // Consulta a la API
+            document.getElementById('estado2').innerText = 'Buscando datos...';
+            try {
+                // CONSULTA A LA API
+                const respuesta = await fetch(url, config);
+                if (respuesta.status === 200) {
+                    const data = await respuesta.json();
+                    console.log(data);
+
+                    const tbody = tabla2.getElementsByTagName('tbody')[0];
+                    tbody.innerHTML = ''; // Limpiar contenido anterior de la tabla
+
+                    data.forEach(country => {
+                        const row = document.createElement('tr');
+                        const datoCell = document.createElement('td');
+                        const valorCell = document.createElement('td');
+
+                        datoCell.textContent = 'País';
+                        valorCell.textContent = country.name;
+
+                        row.appendChild(datoCell);
+                        row.appendChild(valorCell);
+
+                        tbody.appendChild(row);
+                    });
+
+                    document.getElementById('estado2').innerText = 'Datos encontrados';
+                    tabla2.style.display = 'block';
+                } else {
+                    document.getElementById('estado2').innerText = 'Datos no encontrados';
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        formulario2.addEventListener('submit', consultarSubregion);
