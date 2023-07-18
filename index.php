@@ -28,6 +28,8 @@
             background-color: #fff;
             border-radius: 4px;
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+
+            min-height: 100vh;
         }
 
         .container {
@@ -179,7 +181,7 @@
         </div>
 
         <form action="" id="frmUsers3">
-            <h1>PAIS</h1>
+            <h1>nombre</h1>
             <div class="field">
                 <div class="control has-icons-left">
                     <input class="input" name="contries3" type="text" placeholder="Código de moneda" autocomplete="off">
@@ -208,7 +210,7 @@
                 <tbody>
                     <tr>
                         <td id="nombrePais3"></td>
-                        <td id="bandera"></td>                       
+                        <td id="bandera"></td>
                     </tr>
                 </tbody>
             </table>
