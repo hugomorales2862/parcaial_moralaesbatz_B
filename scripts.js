@@ -122,7 +122,7 @@ const consultarSubregion = async (e) => {
       document.getElementById('estado2').innerText = 'Datos encontrados';
       tabla2.style.display = 'block';
     } else {
-      document.getElementById('estado2').innerText = 'Datos no encontrados';
+      document.getElementById('estado2').innerText = 'verifique que halla ingresa los datos en ingles';
     }
   } catch (error) {
     console.log(error);
