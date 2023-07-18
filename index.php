@@ -58,7 +58,7 @@
         <h1>CONTRIES</h1>
         <div class="field is-grouped">
             <div class="control has-icons-left">
-                <input class="input" name="contries" type="text" placeholder="Gentilicio" autocomplete="off">
+                <input class="input" name="contries" type="text" placeholder="Gentilicio en ingles" autocomplete="off">
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
