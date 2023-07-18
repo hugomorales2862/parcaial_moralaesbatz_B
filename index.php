@@ -181,10 +181,10 @@
         </div>
 
         <form action="" id="frmUsers3">
-            <h1>nombre</h1>
+            <h1>IDIOMA</h1>
             <div class="field">
                 <div class="control has-icons-left">
-                    <input class="input" name="contries3" type="text" placeholder="Código de moneda" autocomplete="off">
+                    <input class="input" name="contries3" type="text" placeholder="IDIOMA EN INGLES" autocomplete="off">
                     <span class="icon is-small is-left">
                         <i class=""></i>
                     </span>
