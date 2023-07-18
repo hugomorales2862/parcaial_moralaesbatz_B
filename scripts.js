@@ -73,61 +73,60 @@ const formulario = document.querySelector('#frmUsers');
 
         formulario.addEventListener('submit', consultarPais);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const formulario2 = document.getElementById('frmUsers2');
+const tabla2 = document.getElementById('table2');
+const button2 = document.getElementById('buttonConsulta2');
 
-        const formulario2 = document.getElementById('frmUsers2');
-        const tabla2 = document.getElementById('table2');
-        const button2 = document.getElementById('buttonConsulta2');
+tabla2.style.display = 'none';
 
+const consultarSubregion = async (e) => {
+  e.preventDefault();
+  let nombrePais2 = formulario2.contries2.value;
+  if (nombrePais2 === '') {
+    alert("Ingrese el dato de la SubRegión");
+    return;
+  }
+  const url = `https://restcountries.com/v3.1/subregion/${nombrePais2}`;
 
-        tabla2.style.display = 'none';
+  const config = {
+    method: 'GET'
+  };
 
-        const consultarSubregion = async (e) => {
-            e.preventDefault();
-            let nombrePais2 = formulario2.contries2.value;
-            if (nombrePais2 === '') {
-                alert("Ingrese el dato de la SubRegión");
-                return;
-            }
-            const url = `https://restcountries.com/v3.1/subregion/${nombrePais2}`;
+  // Consulta a la API
+  document.getElementById('estado2').innerText = 'Buscando datos...';
+  try {
+    // CONSULTA A LA API
+    const respuesta = await fetch(url, config);
+    if (respuesta.status === 200) {
+      const data = await respuesta.json();
+      console.log(data);
 
-            const config = {
-                method: 'GET'
-            };
+      const tbody = tabla2.getElementsByTagName('tbody')[0];
+      tbody.innerHTML = ''; // Limpiar contenido anterior de la tabla
 
-            // Consulta a la API
-            document.getElementById('estado2').innerText = 'Buscando datos...';
-            try {
-                // CONSULTA A LA API
-                const respuesta = await fetch(url, config);
-                if (respuesta.status === 200) {
-                    const data = await respuesta.json();
-                    console.log(data);
+      data.forEach(country => {
+        const row = document.createElement('tr');
+        const datoCell = document.createElement('td');
+        const valorCell = document.createElement('td');
 
-                    const tbody = tabla2.getElementsByTagName('tbody')[0];
-                    tbody.innerHTML = ''; // Limpiar contenido anterior de la tabla
+        datoCell.textContent = 'País';
+        valorCell.textContent = country.name.common; // Acceder al nombre común del país
 
-                    data.forEach(country => {
-                        const row = document.createElement('tr');
-                        const datoCell = document.createElement('td');
-                        const valorCell = document.createElement('td');
+        row.appendChild(datoCell);
+        row.appendChild(valorCell);
 
-                        datoCell.textContent = 'País';
-                        valorCell.textContent = country.name;
+        tbody.appendChild(row);
+      });
 
-                        row.appendChild(datoCell);
-                        row.appendChild(valorCell);
+      document.getElementById('estado2').innerText = 'Datos encontrados';
+      tabla2.style.display = 'block';
+    } else {
+      document.getElementById('estado2').innerText = 'Datos no encontrados';
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-                        tbody.appendChild(row);
-                    });
-
-                    document.getElementById('estado2').innerText = 'Datos encontrados';
-                    tabla2.style.display = 'block';
-                } else {
-                    document.getElementById('estado2').innerText = 'Datos no encontrados';
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        formulario2.addEventListener('submit', consultarSubregion);
+formulario2.addEventListener('submit', consultarSubregion);
