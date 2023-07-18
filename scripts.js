@@ -129,18 +129,19 @@ const button3 = document.getElementById('buttonConsulta3');
 
 tabla3.style.display = 'none';
 
-const consultarPorMoneda = async (e) => {
+const consultarPorIdiomaNombre = async (e) => {
     e.preventDefault();
-    let currency = formulario3.contries3.value;
-    if (currency === '') {
-        alert("Ingrese el código de la moneda");
+    let searchTerm = formulario3.contries3.value;
+    if (searchTerm === '') {
+        alert("Ingrese el idioma o nombre a buscar");
         return;
     }
-    const url = `https://restcountries.com/v3.1/lang/${currency}`;
+    const url = `https://restcountries.com/v3.1/lang/${encodeURIComponent(searchTerm)}`;
 
     const config = {
         method: 'GET'
     };
+
     // Consulta a la API
     document.getElementById('estado3').innerText = 'Buscando datos...';
     try {
@@ -156,15 +157,12 @@ const consultarPorMoneda = async (e) => {
             data.forEach(country => {
                 const row = document.createElement('tr');
                 const paisCell = document.createElement('td');
-                const monedaCell = document.createElement('td');
                 const banderaCell = document.createElement('td');
 
                 paisCell.textContent = country.name.common; // Acceder al nombre común del país
-                monedaCell.textContent = currency; // Mostrar el código de la moneda
                 banderaCell.innerHTML = `<img src="${country.flags.svg}" alt="Bandera">`; // Acceder a la URL de la bandera
 
                 row.appendChild(paisCell);
-                row.appendChild(monedaCell);
                 row.appendChild(banderaCell);
 
                 tbody.appendChild(row);
@@ -180,4 +178,4 @@ const consultarPorMoneda = async (e) => {
     }
 };
 
-formulario3.addEventListener('submit', consultarPorMoneda);
+formulario3.addEventListener('submit', consultarPorIdiomaNombre);

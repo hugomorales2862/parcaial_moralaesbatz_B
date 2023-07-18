@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <style>
         .field.has-addons .control:first-child {
-            margin-right: 10px;
+            margin-right: 20px;
         }
 
         body {
@@ -208,8 +208,7 @@
                 <tbody>
                     <tr>
                         <td id="nombrePais3"></td>
-                        <td id="moneda"></td>
-                        <td id="bandera"></td>
+                        <td id="bandera"></td>                       
                     </tr>
                 </tbody>
             </table>
