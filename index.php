@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +78,7 @@
                 <td id="nombreOficial"></td>
             </tr>
             <tr>
-                <td>NOMBRE NATIVO</td>
+                <td>POBLACION</td>
                 <td id="nombreNativo"></td>
             </tr>
             <tr>
